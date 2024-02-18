@@ -12,23 +12,23 @@ class operation{
 			void rem();
 };
 void operation::getdata(){
-	cout<<"enter two numbers:";
+	cout<<"Enter two numbers:";
 	cin>>a>>b;
 	}
 void operation::sum(){
-	cout<<"the sum is:"<<a+b<<endl;
+	cout<<"The Sum is:"<<a+b<<endl;
 }
 void operation::sub(){
-	cout<<"the sub is:"<<a-b<<endl;
+	cout<<"The Difference is:"<<a-b<<endl;
 }
 void operation::mul(){
-	cout<<"the mul is:"<<a*b<<endl;
+	cout<<"The Product is:"<<a*b<<endl;
 }
 void operation::div(){
-	cout<<"the div is:"<<a/b<<endl;
+	cout<<"The division is:"<<a/b<<endl;
 }
 void operation::rem(){
-	cout<<"the rem is :"<<a%b<<endl;
+	cout<<"The Modulus is :"<<a%b<<endl;
 }
 int main(){
 	operation b;
