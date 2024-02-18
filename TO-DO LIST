@@ -1,0 +1,134 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<malloc.h>
+void insert(int,int,int);
+void display();
+void modify(int ,int);
+void deletedata(int);
+void clear();
+struct node{
+    int vno;
+    int vnno;
+    int price;
+    struct node *link;
+}*head=NULL,*p=NULL,*temp=NULL;
+void insert(int a,int b,int c){
+    temp=(struct node*)malloc(sizeof(struct node));
+    temp->vno=a;
+    temp->vnno=b;
+    temp->price=c;
+    temp->link=NULL;
+    if(head==NULL){
+        head=temp;
+        return;
+    }
+    p=head;
+    while(p->link!=NULL){
+        p=p->link;
+    p->link=temp;
+    printf("\nNode inserted sucessfully....");
+    }
+}
+void modify(int old,int new){
+    int i;
+    if(head==NULL){
+      printf("\nSorry the list is empty....");
+      return;
+    }
+    p=head;
+          while(p->vno!=old){
+              p=p->link;
+              p->vno=new;
+              printf("\n the value is modified sucessfully");
+              return;
+          }
+
+}
+void clear(){
+int i;
+if(head==NULL){
+printf("empty list");
+return;
+}
+head=NULL;
+}
+void display(){
+    int i,y,x;
+    if(head==NULL){
+      printf("\nSorry the list is empty....");
+      return;
+    }
+    p=head;
+    printf("\nTHE list");
+     printf("\n-------");
+    while(p!=NULL){
+        printf("\nCar Passed by giving Tax:%d ",p->vno);
+        printf("\nCar Passed by not giving Tax: %d ",p->vnno);
+        x=p->vno-p->vnno;
+        y=x*p->price;
+        printf("\nAmount Recieved:%d",y);
+        p=p->link;
+    }
+}
+void deletedata(int f){
+int i;
+if(head==NULL){
+printf("Empty list");
+return;
+}
+p=head;
+while(p->vnno!=f){
+    temp=p;
+    p=p->link;
+}
+temp->link=p->link;
+free(p);
+printf("\nThe data is deleted sucessfully");
+}
+int main(){
+	int ch,a;
+	 int u,v,o,n,w;
+	char choice;
+	    printf("\n TOLL TAX PLAZA");
+		printf("\n ~~~~~~~~~~~~~~");
+		printf("\n 1 -> Entry of CARS.");
+		printf("\n 2 -> Report of CARS.");
+		printf("\n 3 -> Delete the detail of CARS.");	
+		printf("\n 4 -> Modify the detail of CARS. ");
+		printf("\n 5 -> Clear the detail of CARS. ");
+		printf("\n 6 -> EXIT. ");	
+		printf("\n Enter your choice: ");
+		scanf("%d ",&a);
+		switch(a){
+			case 1:
+			      printf("\nEnter the number car passed afetr giving tax....");
+			      scanf("%d",&u);
+			      printf("\nEnter the number opf car passed without giving tax....");
+			      scanf("%d",&v);
+			      printf("\nEnter the number opf car passed without giving tax....");
+			      scanf("%d",&w);
+			      insert(u,v,w);
+			      break;
+			case 2:
+			      display();break;
+			case 3:
+				 deletedata();
+				 break;
+			case 4:
+			
+                 printf("\nEnter the number to be replaced\n");
+                 scanf("%d",&o);
+                 printf("\nEnter the new number\n");
+                 scanf("%d",&n);
+                 modify(o,n);
+                 display();
+            break;	
+            case 5:
+               clear();
+               break;
+            case 6:
+     	           exit(1);
+                    break;
+			} 
+		} 
+
